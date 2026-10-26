@@ -37,7 +37,7 @@ export default function Goals() {
             title="The week, still open."
             text="Each goal has a target and a log button. Progress fills as you record the work — distance, sessions, steps, water, and sleep."
           />
-          <button type="button" className="btn btn-line self-start" onClick={() => setGoals(cloneGoals())}>
+          <button type="button" className="btn btn-line self-start sm:self-end" onClick={() => setGoals(cloneGoals())}>
             Reset week
           </button>
         </div>
@@ -47,8 +47,8 @@ export default function Goals() {
             const complete = goal.current >= goal.target
             const percent = Math.round((goal.current / goal.target) * 100)
             return (
-              <Reveal key={goal.id} delay={index * 60} className="h-full">
-                <article className={`card-shadow flex h-full flex-col rounded-[1.6rem] border bg-paper p-5 transition duration-300 hover:-translate-y-1 ${complete ? 'border-volt' : 'border-sand'}`}>
+              <Reveal key={goal.id} delay={index * 60} className="h-full" tilt>
+                <article className={`card-shadow flex h-full flex-col rounded-[1.6rem] border bg-paper p-5 ${complete ? 'border-volt' : 'border-sand'}`}>
                   <div className="flex items-start justify-between gap-3">
                     <span className="grid h-11 w-11 place-items-center rounded-2xl bg-ink text-volt">
                       <GoalIcon id={goal.id} />

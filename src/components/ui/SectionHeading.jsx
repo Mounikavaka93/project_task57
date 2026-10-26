@@ -9,7 +9,7 @@ export default function SectionHeading({
 }) {
   const alignment = align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'
   return (
-    <div className={`${alignment} ${className}`}>
+    <div data-nav-anchor className={`${alignment} ${className}`}>
       <p className={`text-xs font-bold uppercase tracking-[0.22em] ${light ? 'text-volt' : 'text-moss'}`}>
         {eyebrow}
       </p>

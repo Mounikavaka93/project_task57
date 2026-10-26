@@ -21,7 +21,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 4.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   body {
@@ -34,7 +43,7 @@
   }
 
   section[id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 4.5rem;
   }
 
   ::selection {
@@ -190,11 +199,11 @@
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: perspective(900px) rotateX(14deg) translateY(18px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: perspective(900px) rotateX(0deg) translateY(0);
   }
 }
 
@@ -225,14 +234,14 @@
   }
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+* {
+  scrollbar-width: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-moss);
-  border-radius: 999px;
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

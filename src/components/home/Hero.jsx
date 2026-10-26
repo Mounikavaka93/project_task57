@@ -1,7 +1,7 @@
-import { getTodayIndex, highlights, stepGoal, weekActivity } from '../../data/site'
+import { getTodayIndex, heartZone, highlights, stepGoal, weekActivity, workouts } from '../../data/site'
 import AnimatedNumber from '../ui/AnimatedNumber'
 import Container from '../ui/Container'
-import { IconArrow } from '../ui/Icons'
+import { CategoryIcon, IconArrow } from '../ui/Icons'
 import ProgressRing from '../ui/ProgressRing'
 
 export default function Hero() {
@@ -48,10 +48,27 @@ export default function Hero() {
             </dl>
           </div>
 
-          <div className="relative min-w-0">
-            <div className="pointer-events-none absolute -left-8 top-8 h-40 w-40 rounded-full bg-volt/20 blur-3xl" />
-            <div className="pointer-events-none absolute -right-4 bottom-6 h-32 w-32 rounded-full bg-ember/25 blur-3xl" />
-            <div className="relative rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-canopy to-pine p-4 shadow-2xl sm:p-6">
+          <div className="min-w-0">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+              {workouts.map((style) => (
+                <a
+                  key={style.id}
+                  href="#workouts"
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 transition hover:border-volt/50 hover:bg-white/[0.08]"
+                >
+                  <span
+                    className="grid h-9 w-9 place-items-center rounded-xl text-ink"
+                    style={{ background: style.accent }}
+                  >
+                    <CategoryIcon id={style.id} className="h-4 w-4" />
+                  </span>
+                  <p className="mt-3 font-display text-base font-bold leading-none">{style.name}</p>
+                  <p className="mt-1 text-xs text-cream/60">{style.focus}</p>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-3 rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-canopy to-pine p-4 shadow-2xl sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <p className="text-sm font-semibold text-cream/80">Today · {today.day}</p>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider">
@@ -88,11 +105,11 @@ export default function Hero() {
                   </p>
                   <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/10">
                     <div
-                      className="h-full rounded-full bg-ember transition-[width] duration-700"
+                      className="h-full rounded-full bg-ember"
                       style={{ width: `${Math.min(100, ((today.hr - 60) / 120) * 100)}%` }}
                     />
                   </div>
-                  <p className="mt-2 text-xs text-cream/65">Workout average</p>
+                  <p className="mt-2 text-xs text-cream/65">{heartZone(today.hr)}</p>
                 </div>
               </div>
 
@@ -103,12 +120,23 @@ export default function Hero() {
                 </div>
                 <div className="mt-3 flex h-16 items-end gap-1.5">
                   {weekActivity.map((day) => (
-                    <div key={day.day} className="relative h-full flex-1" title={`${day.day}: ${day.minutes} min`}>
+                    <div key={day.day} className="flex h-full min-w-0 flex-1 flex-col justify-end">
                       <div
-                        className={`absolute inset-x-0 bottom-0 rounded-md ${day.day === today.day ? 'bg-volt' : 'bg-white/20'}`}
-                        style={{ height: `${Math.max(12, (day.minutes / maxMinutes) * 100)}%` }}
+                        className={`rounded-md ${day.day === today.day ? 'bg-volt' : 'bg-white/20'}`}
+                        style={{ height: `${Math.max(18, (day.minutes / maxMinutes) * 100)}%` }}
+                        title={`${day.day}: ${day.minutes} min`}
                       />
                     </div>
+                  ))}
+                </div>
+                <div className="mt-2 flex gap-1.5">
+                  {weekActivity.map((day) => (
+                    <span
+                      key={day.short}
+                      className={`flex-1 text-center text-[10px] font-bold uppercase tracking-wide ${day.day === today.day ? 'text-volt' : 'text-cream/45'}`}
+                    >
+                      {day.short}
+                    </span>
                   ))}
                 </div>
               </div>

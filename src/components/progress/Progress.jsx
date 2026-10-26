@@ -94,8 +94,8 @@ export default function Progress() {
 
         <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {records.map((record, index) => (
-            <Reveal key={record.label} delay={index * 60}>
-              <article className="card-shadow h-full rounded-3xl border border-sand bg-paper p-5 transition duration-300 hover:-translate-y-1">
+            <Reveal key={record.label} delay={index * 60} tilt tiltMax={7}>
+              <article className="card-shadow h-full rounded-3xl border border-sand bg-paper p-5">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-mist">{record.label}</p>
                 <p className="mt-3 font-display text-3xl font-extrabold">{record.value}</p>
                 <p className="mt-2 text-sm text-ink/65">{record.note}</p>

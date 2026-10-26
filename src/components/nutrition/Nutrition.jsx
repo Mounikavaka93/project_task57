@@ -84,8 +84,8 @@ export default function Nutrition() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {meals.map((meal, index) => (
-              <Reveal key={meal.id} delay={index * 70} className={`h-full ${index === 0 ? 'sm:col-span-2' : ''}`}>
-                <article className="card-shadow flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-sand bg-paper transition duration-300 hover:-translate-y-1">
+              <Reveal key={meal.id} delay={index * 70} className={`h-full ${index === 0 ? 'sm:col-span-2' : ''}`} tilt>
+                <article className="card-shadow flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-sand bg-paper">
                   <div className="flex items-end justify-between px-5 py-6" style={{ background: meal.tint }}>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink/55">{meal.course}</p>

@@ -49,14 +49,17 @@ export default function Navbar() {
   const close = () => setOpen(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 lg:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 lg:px-10">
       <a
         href="#home"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-volt focus:px-4 focus:py-2 focus:text-ink"
       >
         Skip to content
       </a>
-      <div className="relative z-10 mx-auto flex max-w-[1440px] items-center justify-between gap-3 rounded-2xl border border-white/10 bg-ink/80 px-3 py-2 shadow-lg backdrop-blur-md sm:px-4">
+      <div
+        data-nav-bar
+        className="relative z-10 mx-auto flex max-w-[1440px] items-center justify-between gap-3 rounded-2xl border border-white/10 bg-ink/80 px-3 py-2 shadow-lg backdrop-blur-md sm:px-4"
+      >
         <a href="#home" className="flex items-center gap-2.5 text-cream" onClick={close}>
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-volt text-ink">
             <IconPulse className="h-5 w-5" />

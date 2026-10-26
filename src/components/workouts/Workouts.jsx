@@ -71,12 +71,12 @@ export default function Workouts() {
             const selected = category.id === active.id
             const progress = averageProgress(category.exercises)
             return (
-              <Reveal key={category.id} delay={index * 70}>
+              <Reveal key={category.id} delay={index * 70} tilt tiltMax={8}>
                 <button
                   type="button"
                   onClick={() => setActiveId(category.id)}
                   aria-pressed={selected}
-                  className={`flex h-full w-full flex-col rounded-[1.6rem] border p-5 text-left transition duration-300 hover:-translate-y-1 ${
+                  className={`flex h-full w-full flex-col rounded-[1.6rem] border p-5 text-left transition duration-300 ${
                     selected ? 'border-volt bg-white/10' : 'border-white/10 bg-white/5 hover:bg-white/10'
                   }`}
                 >

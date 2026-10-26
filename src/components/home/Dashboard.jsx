@@ -45,7 +45,7 @@ export default function Dashboard() {
           <p className="text-sm font-medium text-ink/60">Sample week · numbers update when you pick a day</p>
         </div>
 
-        <div className="mt-8 grid grid-cols-7 gap-1.5 sm:flex sm:gap-2" role="tablist" aria-label="Days of the week">
+        <div className="mt-8 grid grid-cols-7 gap-1.5 sm:gap-2" role="tablist" aria-label="Days of the week">
           {weekActivity.map((item, index) => {
             const isSelected = index === selected
             const isToday = index === getTodayIndex()
@@ -56,20 +56,16 @@ export default function Dashboard() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setSelected(index)}
-                className={`rounded-2xl px-1 py-2 text-center transition sm:min-w-[4.25rem] sm:px-3 sm:text-left ${
+                className={`rounded-2xl px-1 py-2 text-center transition sm:px-2 ${
                   isSelected ? 'bg-ink text-cream' : 'bg-paper text-ink hover:-translate-y-0.5 hover:bg-sand'
                 }`}
               >
                 <span className="block text-[10px] font-bold uppercase tracking-wider opacity-70 sm:text-[11px]">
-                  <span className="sm:hidden">{item.short}</span>
-                  <span className="hidden sm:inline">
-                    {item.short}
-                    {isToday ? ' · today' : ''}
-                  </span>
+                  {item.short}
                 </span>
-                <span className="mt-1 hidden text-sm font-semibold sm:block">{item.day}</span>
+                <span className="mt-0.5 hidden text-sm font-semibold sm:block">{item.day}</span>
                 <span
-                  className={`mx-auto mt-1 block h-1 w-1 rounded-full sm:hidden ${isToday ? 'bg-volt' : 'bg-transparent'}`}
+                  className={`mx-auto mt-1 block h-1 w-1 rounded-full ${isToday ? 'bg-volt' : 'bg-transparent'}`}
                 />
               </button>
             )
@@ -77,7 +73,7 @@ export default function Dashboard() {
         </div>
 
         <div key={day.day} className="rise mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-live="polite">
-          <Reveal>
+          <Reveal tilt>
             <article className="card-shadow h-full rounded-3xl border border-sand bg-paper p-5">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-mist">Daily steps</p>
@@ -93,7 +89,7 @@ export default function Dashboard() {
             </article>
           </Reveal>
 
-          <Reveal delay={80}>
+          <Reveal delay={80} tilt>
             <article className="card-shadow h-full rounded-3xl border border-sand bg-paper p-5">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-mist">Calories burned</p>
@@ -108,7 +104,7 @@ export default function Dashboard() {
             </article>
           </Reveal>
 
-          <Reveal delay={140}>
+          <Reveal delay={140} tilt>
             <article className="card-shadow h-full rounded-3xl border border-sand bg-paper p-5">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-mist">Workout duration</p>
@@ -125,7 +121,7 @@ export default function Dashboard() {
             </article>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal delay={200} tilt tiltMax={8}>
             <article className="card-shadow h-full rounded-3xl border border-sand bg-ink p-5 text-cream">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-cream/60">Heart rate</p>
